@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+        <head>
+        <style>
+        input:focus {
+
+        outline-color:pink;
+        }
+        h1 {
+          font-size: 30px;
+          color: blue;
+          text-align: center;
+        }
+        button{
+          width: 200px;
+          hight: 50px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 20px;
+        }
+        input {
+          hight: 40px;
+          width: 300px;
+          font: 35px;
+          align: center;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          text-align:center;
+        }
+        body {
+          background: #7BCEA2;
+        }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
+        <script  type="text/javascript">
+        var compliments = ["NICE HAIR", "GOOD BODY", "NICE HAIR"];
+        function showRandomCompliment() {
+          var index = 0;
+          index = Math.floor(Math.random() * compliments.length);
+          $("h1").text(compliments[index]);
+        }
+        function notSwearing() {
+          var said = $("input").val();
+          if (said.indexOf ("heck")>= 0) {
+            return false;
+          }
+
+        function submitClicked() {
+          if ($("input").val().length > 0 && notSwearing() ) {
+          var whateverIsInTheInputBox;
+          whateverIsInTheInputBox = $("input").val();
+          compliments.push(whateverIsInTheInputBox);
+          showRandomCompliment();
+          $("input").val("");
+        }
+        }
+
+        function setup()  {
+          firebase = new Firebase
+          $("button").click(submitClicked);
+        }
+        $(document).ready(setup);
+        </script>
+        </head>
+        <body>
+
+          <h1>you are a <b>baller</b>
+        <button>submit</button>
+        <input placeholder= "Type to be hacked">
+      </body>
+</html>
